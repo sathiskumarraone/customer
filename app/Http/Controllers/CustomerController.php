@@ -7,9 +7,24 @@ use App\Models\Customer;
 
 class CustomerController extends Controller
 {
-    public function index(){
+    public function index(Request $reg){
+        
 
-         $data=customer::all();
-         return view('Customer',['customers'=>$data]);
+        
+
+        
+        $customer=new customer;
+        $customer->id=$req->id;
+        $customer->first_name=$req->first_name;
+        $customer->last_name=$req->last_name;
+        $customer->gender=$req->gender;
+        $customer->save();
+        return redirect ('customer');      
+    }
+
+    public function getdata(){
+
+        $save=customer::all();
+        return view('customer',['customers'=>$save]);
     }
 }

@@ -17,4 +17,6 @@ use App\Htttp\Controllers\CustomerController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/customer','App\Http\Controllers\CustomerController@index');
+Route::get('customer','App\Http\Controllers\CustomerController@getData');
+Route::view('add','add');
+Route::post('add','App\Http\Controllers\CustomerController@index');

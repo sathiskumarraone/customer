@@ -34,63 +34,32 @@ td {
 
 
 
-<script>  
-export default {
-  name: "ADD",
-  data: () => ({ id: "",first_name: "",last_name: "",  gender: [] }),
-  computed: {
-    sortedList: function() {
-      return this.allScores.slice().sort(function(a, b, c, d) {
-        return b.score - a.score - c.score, d.score ;
-      });
-    },
-  },
-  methods: {
-    onSubmit() {
-      this.allScores.push({ id: this.id, first_name: this.first_name, last_name: this.last_name, gender: this.gender, });
-      this.clearForm();
-    },
-    clearForm() {
-        this.id = "";
-      this.first_name = "";
-      this.last_name = "";
-      this.gender = "";
-    },
-  },
-};
+
 </script> 
 
 </head>
 
 <body>
-<div class="container"><br><br>
+
 <h1>Customers Details</h1>
 @csrf
-<br><br>
-                 <table class="table table-sm">
-                      <thead class="thead-dark"> 
-                          <tr>
-                            <th>id<th>
-                            <th>first_name<th>
-                            <th>last_name<th>
-                            <th>gender<th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                            @foreach($customers as $customer)
-                  <tr>
-                        <td class="table-primary">{{ $customer ->id }}</td>
-                        <td class="table-secondary">{{ $customer ->first_name }}</td>
-                        <td class="table-success">{{ $customer ->last_name }}</td>
-                        <td class="table-danger">{{ $customer ->gender }}</td>
-                       <td>
-                        <a href="" class="btn btn-secondary">EDIT</a>
-                        <a href="" class="btn btn-danger">DELETE</a>
-                        </td>
-                  </tr>
+
+  <table border="1">
+       <tr>
+           <th>ID<th>
+           <th>FIRST_NAME<th>
+           <th>LAST_NAME<th>
+           <th>GENDER<th>
+         </tr>
+ @foreach($customers as $customer)
+      <tr>
+         <td class="table-primary">{{ $customer ->id }}</td>
+         <td class="table-secondary">{{ $customer ->first_name }}</td>
+         <td class="table-success">{{ $customer ->last_name }}</td>
+         <td class="table-danger">{{ $customer ->gender }}</td>
+       </tr>
     @endforeach
-    </tbody>
-    </table>
-    </div>   
+   </table>
+      
 </body>
 </html>
